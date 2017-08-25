@@ -24,13 +24,16 @@
         //tous ce qui est affiché...
         ob_start();
 
-                //Vérifier dans quelle page on veut accéder
-                if($p === 'home'){
-                    require '../pages/home.php';
-                }
-                elseif($p === 'article'){
-                    require '../pages/single.php';
-                }
+            //Vérifier dans quelle page on veut accéder
+            if($p === 'home'){
+                require '../pages/home.php';
+            }
+            elseif($p === 'article'){
+                require '../pages/single.php';
+            }
+            elseif($p === 'categorie'){
+                require '../pages/categorie.php';
+            }
 
         //... On le stocke dans une variable...
         $content = ob_get_clean();

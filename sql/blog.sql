@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost:8889
--- Généré le :  Ven 25 Août 2017 à 21:01
+-- Généré le :  Ven 25 Août 2017 à 23:26
 -- Version du serveur :  5.5.42
 -- Version de PHP :  7.0.0
 
@@ -39,9 +39,9 @@ CREATE TABLE `articles` (
 --
 
 INSERT INTO `articles` (`id`, `titre`, `contenu`, `date`, `category_id`) VALUES
-(1, 'Article de test', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Non est igitur voluptas bonum. Hoc dixerit potius Ennius: Nimium boni est, cui nihil est mali. Si mala non sunt, iacet omnis ratio Peripateticorum. Vide igitur ne non debeas verbis nostris uti, sententiis tuis.', '2017-08-01 07:19:00', 2),
-(2, 'Article de test 2', 'Dempta enim aeternitate nihilo beatior Iuppiter quam Epicurus; Duo Reges: constructio interrete. Quasi ego id curem, quid ille aiat aut neget. Nemo igitur esse beatus potest. Illud dico, ea, quae dicat, praeclare inter se cohaerere.', '2017-08-10 05:25:00', 1),
-(3, 'mon titre 3', 'Ut pulsi recurrant? Mihi, inquam, qui te id ipsum rogavi? Nos paucis ad haec additis finem faciamus aliquando; Ergo illi intellegunt quid Epicurus dicat, ego non intellego? Ita relinquet duas, de quibus etiam atque etiam consideret. ', '2017-08-23 08:21:00', 2);
+(1, 'Article de test', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ultricies eget sapien sit amet vulputate. Maecenas nec convallis lacus. Sed at urna tellus. Nullam fringilla mi quis quam vulputate suscipit. Duis sit amet gravida lectus. Etiam sit amet est non quam imperdiet fringilla a vel ex. Sed eu tempus ante. Integer vestibulum leo facilisis nisl tempor dignissim. Nulla congue risus in ligula congue imperdiet. Donec elementum lectus arcu, nec condimentum lectus porttitor viverra. Morbi tempus purus vitae gravida porta. Nulla ullamcorper lectus eget dolor porttitor mattis. Nullam elementum scelerisque sem.\r\n\r\n', '2017-08-01 07:19:00', 2),
+(2, 'Article de test 2', 'In hac habitasse platea dictumst. Suspendisse sed turpis pulvinar, euismod lacus in, pellentesque mauris. Proin maximus accumsan urna, eget scelerisque eros auctor sit amet. Suspendisse aliquam risus metus, vitae eleifend justo bibendum in. Mauris ac odio velit. Aenean ac ante id odio feugiat iaculis. Maecenas facilisis mattis malesuada. Cras non feugiat quam, quis pulvinar sapien. In a efficitur dolor. Nullam eget nulla id tortor volutpat elementum at ut lectus. Integer dapibus semper convallis.\r\n\r\n', '2017-08-10 05:25:00', 1),
+(3, 'mon titre 3', 'Cras vel orci orci. Morbi pharetra a ligula eget ultrices. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer condimentum odio neque. Phasellus iaculis elit libero, vitae fermentum nibh tempus eget. Nullam quis ultricies ipsum. Etiam vitae arcu facilisis, pellentesque lacus a, ornare neque. Nam ac congue leo, a lobortis mi. Nunc ullamcorper varius tempus. Mauris viverra elementum vehicula. Vivamus commodo venenatis justo quis luctus. Aliquam efficitur libero eget varius ornare. Maecenas a sem rutrum, mollis sem at, condimentum purus.', '2017-08-23 08:21:00', 2);
 
 -- --------------------------------------------------------
 

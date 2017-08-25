@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Starter Template for Bootstrap</title>
+    <title><?= App\App::getTitle(); ?></title>
 
     <!-- Bootstrap core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -27,15 +27,14 @@
 
     <div class="container">
 
-      <div class="starter-template" style="padding-top:100px;">
-          <?php
-            /**
-             * variable qui contient le contenu des pages
-             */
-            echo $content;
-          ?>
+      <div class="starter-template" style="padding-top: 100px">
+        <?php
+          /**
+           * variable qui contient le contenu des pages
+           */
+          echo $content;
+        ?>
       </div>
-
     </div><!-- /.container -->
   </body>
 </html>

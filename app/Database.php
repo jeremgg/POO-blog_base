@@ -66,9 +66,18 @@
          * @param  class_name  le nom de la class
          * @return string
          */
-        public function query($statement, $class_name){
-            $req = $this->getPDO()->query($statement);    //stocker tous les articles.
-            $datas = $req->fetchAll(PDO::FETCH_CLASS, $class_name);   //récupérer les résultats
+        public function query($statement, $class_name, $one = false){
+            $req = $this->getPDO()->query($statement); //stocker tous les articles.
+            $req->setFetchMode(PDO::FETCH_CLASS, $class_name);  //récupère les résultats
+
+            //Si on veut afficher un seul article
+            if($one){
+                $datas = $req->fetch();
+            }
+            else{
+                $datas = $req->fetchAll();   //sinon on affiche tous les résultats
+            }
+
             return $datas;
         }
 
@@ -84,17 +93,17 @@
          */
         public function prepare($statement, $attributes, $class_name, $one = false){
             $req = $this->getPDO()->prepare($statement);   //définit une requête préparé
-            $req->execute($attributes);   //exécuter la requète en fonction des paramètres de la requète
-            $req->setFetchMode(PDO::FETCH_CLASS, $class_name);   //récupère les résultats
+            $req->execute($attributes);  //exécuter la requète en fonction des paramètres de la requète
+            $req->setFetchMode(PDO::FETCH_CLASS, $class_name);  //récupère les résultats
 
             //Si on veut afficher un seul article
             if($one){
                 $datas = $req->fetch();
             }
-            //sinon on affiche tous les résultats
             else{
-                $datas = $req->fetchAll();
+                $datas = $req->fetchAll();   //sinon on affiche tous les résultats
             }
+
             return $datas;
         }
     }

@@ -6,32 +6,63 @@
 
 
 
-    class Article{
+
+    class Article extends Table{
+
+        //on stocke le nom de la table des articles
+        protected static $table = "articles";
+
+
 
         /**
-         * Récupérer tous les articles avec leurs catégories correspondantes
+         * Récupérer la catégorie courante
+         * Initialiser la connexion à la BDD et faire la requète avec en paramètre
+         * la requète, l'id, le nom de la class appelé et si on veut un seul résultat
+         * @param  $id
          * @return array
          */
-        public static function getLast(){
-            //initialiser la connexion à la BDD et faire la requète de jointure
-            return App::getDb()->query("
+        public static function find($id){
+            return self::query("
                 SELECT articles.id, articles.titre, articles.contenu, categories.titre as categorie
                 FROM articles
                 LEFT JOIN categories ON category_id = categories.id
-            ", __CLASS__);
+                WHERE articles.id = ?
+            ", [$id], true);
         }
 
 
 
         /**
-         * Utiliser cette fonction dès que le système tombe sur une fonction qu'il ne connait pas
-         * @param  $key
-         * @return string
+         * Récupérer tous les articles avec leurs catégories correspondantes
+         * Initialiser la connexion à la BDD et faire la requète de jointure
+         * @return array
          */
-        public function __get($key){
-            $method = 'get' . ucfirst($key);
-            $this->$key = $this->$method();
-            return $this->$key;
+        public static function getLast(){
+            return self::query("
+                SELECT articles.id, articles.titre, articles.contenu, categories.titre as categorie
+                FROM articles
+                LEFT JOIN categories ON category_id = categories.id
+                ORDER BY articles.date DESC
+            ");
+        }
+
+
+
+        /**
+         * Récupérer tous les articles de la catégorie correspondante
+         * Initialiser la connexion à la BDD et faire la requète de jointure
+         * @param  $category_id
+         * @return array
+         */
+        public static function lastByCategory($category_id){  
+            return self::query("
+                SELECT articles.id, articles.titre, articles.contenu, categories.titre as categorie
+                FROM articles
+                LEFT JOIN categories
+                    ON category_id = categories.id
+                WHERE category_id = ?
+                ORDER BY articles.date DESC
+            ", [$category_id]);
         }
 
 
@@ -51,7 +82,7 @@
          * @return string
          */
         public function getExtrait(){
-            $html = '<p>' . substr($this->contenu, 0, 250) . '...</p>';   //skocke les 250 premier caractères du contenu
+            $html = '<p>' . substr($this->contenu, 0, 250) . '...</p>';   //skocke les 250 premier caractères su contenu
             $html .= '<p><a href="' . $this->getUrl() . '">Voir la suite</a>';
             return $html;
         }
