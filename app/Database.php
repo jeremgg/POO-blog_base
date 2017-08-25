@@ -57,6 +57,20 @@
 
             return $this->pdo;
         }
+
+
+
+        /**
+         * Récupérer les résultats de la requète
+         * @param  $statement  la requète sql à effectuer
+         * @param  class_name  le nom de la class
+         * @return string
+         */
+        public function query($statement, $class_name){
+            $req = $this->getPDO()->query($statement);    //stocker tous les articles.
+            $datas = $req->fetchAll(PDO::FETCH_CLASS, $class_name);   //récupérer les résultats
+            return $datas;
+        }
     }
 
 ?>

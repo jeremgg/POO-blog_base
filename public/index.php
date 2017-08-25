@@ -19,6 +19,13 @@
 
 
 
+
+    //Initialisation de connexion à la BDD
+    $db = new App\Database('blog');
+
+
+
+
     //Afficher les contenu des pages chargées
         //tous ce qui est affiché...
         ob_start();
