@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost:8889
--- Généré le :  Ven 25 Août 2017 à 18:09
+-- Généré le :  Ven 25 Août 2017 à 21:01
 -- Version du serveur :  5.5.42
 -- Version de PHP :  7.0.0
 
@@ -43,6 +43,25 @@ INSERT INTO `articles` (`id`, `titre`, `contenu`, `date`, `category_id`) VALUES
 (2, 'Article de test 2', 'Dempta enim aeternitate nihilo beatior Iuppiter quam Epicurus; Duo Reges: constructio interrete. Quasi ego id curem, quid ille aiat aut neget. Nemo igitur esse beatus potest. Illud dico, ea, quae dicat, praeclare inter se cohaerere.', '2017-08-10 05:25:00', 1),
 (3, 'mon titre 3', 'Ut pulsi recurrant? Mihi, inquam, qui te id ipsum rogavi? Nos paucis ad haec additis finem faciamus aliquando; Ergo illi intellegunt quid Epicurus dicat, ego non intellego? Ita relinquet duas, de quibus etiam atque etiam consideret. ', '2017-08-23 08:21:00', 2);
 
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `categories`
+--
+
+CREATE TABLE `categories` (
+  `id` int(11) NOT NULL,
+  `titre` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `categories`
+--
+
+INSERT INTO `categories` (`id`, `titre`) VALUES
+(1, 'informatique'),
+(2, 'digital painting');
+
 --
 -- Index pour les tables exportées
 --
@@ -54,6 +73,12 @@ ALTER TABLE `articles`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT pour les tables exportées
 --
 
@@ -62,6 +87,11 @@ ALTER TABLE `articles`
 --
 ALTER TABLE `articles`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT pour la table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -8,8 +8,17 @@
 
     class Article{
 
+        /**
+         * Récupérer tous les articles avec leurs catégories correspondantes
+         * @return array
+         */
         public static function getLast(){
-            return App::getDb()->query("SELECT * FROM articles", __CLASS__);
+            //initialiser la connexion à la BDD et faire la requète de jointure
+            return App::getDb()->query("
+                SELECT articles.id, articles.titre, articles.contenu, categories.titre as categorie
+                FROM articles
+                LEFT JOIN categories ON category_id = categories.id
+            ", __CLASS__);
         }
 
 
