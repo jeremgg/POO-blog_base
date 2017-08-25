@@ -71,6 +71,32 @@
             $datas = $req->fetchAll(PDO::FETCH_CLASS, $class_name);   //récupérer les résultats
             return $datas;
         }
+
+
+
+        /**
+         * Afficher L'article correspond à la variable URL id
+         * @param  $statement   la requète sql à effectuer
+         * @param  $attributes   la variable URL id
+         * @param  $class_name   le nom de la class
+         * @param  boolean $one  le nombre d'articles à afficher
+         * @return string
+         */
+        public function prepare($statement, $attributes, $class_name, $one = false){
+            $req = $this->getPDO()->prepare($statement);   //définit une requête préparé
+            $req->execute($attributes);   //exécuter la requète en fonction des paramètres de la requète
+            $req->setFetchMode(PDO::FETCH_CLASS, $class_name);   //récupère les résultats
+
+            //Si on veut afficher un seul article
+            if($one){
+                $datas = $req->fetch();
+            }
+            //sinon on affiche tous les résultats
+            else{
+                $datas = $req->fetchAll();
+            }
+            return $datas;
+        }
     }
 
 ?>
