@@ -7,6 +7,19 @@
     class Article{
 
         /**
+         * Utiliser cette fonction dès que le système tombe sur une fonction qu'il ne connait pas
+         * @param  $key
+         * @return string
+         */
+        public function __get($key){
+            $method = 'get' . ucfirst($key);
+            $this->$key = $this->$method();
+            return $this->$key;
+        }
+
+
+
+        /**
          * Retourner le lien de l'article
          * @return string
          */
