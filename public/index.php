@@ -7,38 +7,19 @@
     App\Autoloader::register();
 
 
-
-    //Vérifier qu'une variable url p existe,
-    //si c'est le cas on la stocke dans une variable p
-    if(isset($_GET['p'])){
-        $p = $_GET['p'];
-    }
-    else{
-        $p = 'home';
-    }
+    //Récupérer l'instance unique de configuration
+    $app = App\App::getInstance();
 
 
+    //Récupérer le nom de la table
+    $posts = $app->getTable('Posts');
+    $users = $app->getTable('Categories');
+    $categories = $app->getTable('Users');
 
 
-    //Afficher les contenu des pages chargées
-        //tous ce qui est affiché...
-        ob_start();
-
-            //Vérifier dans quelle page on veut accéder
-            if($p === 'home'){
-                require '../pages/home.php';
-            }
-            elseif($p === 'article'){
-                require '../pages/single.php';
-            }
-            elseif($p === 'categorie'){
-                require '../pages/categorie.php';
-            }
-
-        //... On le stocke dans une variable...
-        $content = ob_get_clean();
-
-        //... Puis on charge le template de page
-        require '../pages/templates/default.php';
+    //Récupérer le nom de la table
+    var_dump($posts);
+    var_dump($users);
+    var_dump($categories);
 
  ?>
