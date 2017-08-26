@@ -1,6 +1,6 @@
 <?php
 
-    namespace App;
+    namespace Core;
 
 
 
@@ -19,11 +19,12 @@
         /**
          * Méthode statique qui permet d'instancier ou de récupérer l'instance unique
          * Instancier la class si l'instance n'existe pas au niveaux de la propriété statique $_instance
+         * @param  string $file Fichier de configuration de la BDD
          * @return retourner l'instance
          */
-        public static function getInstance(){
+        public static function getInstance($file){
             if(is_null(self::$_instance)){
-                self::$_instance = new Config();
+                self::$_instance = new Config($file);
             }
             return self::$_instance;   
 
@@ -33,10 +34,10 @@
 
         /**
          * Lire le ficher de configuration et ajouter les données de configuration à la propriété settings
+         * @param  string $file Fichier de configuration de la BDD
          */
-        public function __construct(){
-            $this->id = uniqid();  //générer une clé unique
-            $this->settings = require dirname(__DIR__) . '/config/config.php';   //charger le fichier config.php. 
+        public function __construct($file){
+            $this->settings = require($file);   //charger le fichier config.php. 
         }
 
 

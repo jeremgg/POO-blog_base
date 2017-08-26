@@ -1,25 +1,45 @@
 <?php
 
-    require('../app/Autoloader.php');
+    //constante qui définit la racine de l'application
+	define('ROOT', dirname(__DIR__));
+
+    
+    //Chargement de la class App
+    require ROOT . '/app/App.php';
+    
+
+    //Chargement de notre autoloader
+    App::load();
 
 
-    //Chargement de notre autoloader avec la méthode register de la class Autoloader
-    App\Autoloader::register();
 
 
-    //Récupérer l'instance unique de configuration
-    $app = App\App::getInstance();
+    //Vérifier qu'une variable url p existe,
+    //si c'est le cas on la stocke dans une variable p
+    if(isset($_GET['p'])){
+        $page = $_GET['p'];
+    }
+    else{
+        $page = 'home';
+    }
 
 
-    //Récupérer le nom de la table
-    $posts = $app->getTable('Posts');
-    $users = $app->getTable('Categories');
-    $categories = $app->getTable('Users');
 
 
-    //Récupérer le nom de la table
-    var_dump($posts);
-    var_dump($users);
-    var_dump($categories);
+    //Afficher les contenu des pages chargées
+        //tous ce qui est affiché...
+        ob_start();
 
- ?>
+                //Vérifier dans quelle page on veut accéder
+                if($page === 'home'){
+			        require ROOT . '/pages/posts/home.php';
+			    }
+
+        //... On le stocke dans une variable...
+        $content = ob_get_clean();
+
+        //... Puis on charge le template de page
+        require ROOT . '/pages/templates/default.php';
+
+
+?>

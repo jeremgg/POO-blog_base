@@ -1,18 +1,19 @@
 <?php
 
-    namespace App;
+    namespace Core\Database;
 
-    use \PDO;   //utiliser la class PDO en dehors du namespace App
+    use \PDO;
 
 
 
-    class Database{
+    class MysqlDatabase extends Database{
 
         //Initialiser les paramètres de connexion à la BDD
         private $db_name;
         private $db_user;
         private $db_pass;
         private $db_host;
+        
 
         //stocker les paramètres de connexions
         private $pdo;
@@ -27,7 +28,7 @@
          * @param string $db_host
          */
         public function __construct($db_name, $db_user = 'root', $db_pass = 'root', $db_host = 'localhost'){
-
+            
             //Initialiser les paramètres de connexion à la BDD en fonction des paramètre du constructeur
             $this->db_name = $db_name;
             $this->db_user = $db_user;
@@ -39,18 +40,19 @@
 
         /**
          * Générer le PDO
+         * Exécuter la connexion à la BDD une seule fois
          * @return string  la propriété pdo
          */
         private function getPDO(){
-
             //si le connexion à la BDD n'est pas établi
             if($this->pdo === null){
+                
                 //Créer une instance de l'objet PDO
                 $pdo = new PDO('mysql:dbname=blog;host=localhost', 'root', 'root');
-
-                //Afficher les erreur sql
+                
+                //si le connexion à la BDD n'est pas établi
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
+                
                 //stocker la fonction dans l'instance
                 $this->pdo = $pdo;
             }
@@ -66,19 +68,27 @@
          * @param  class_name  le nom de la class
          * @return string
          */
-        public function query($statement, $class_name, $one = false){
-            $req = $this->getPDO()->query($statement); //stocker tous les articles.
-            $req->setFetchMode(PDO::FETCH_CLASS, $class_name);  //récupère les résultats
+        public function query($statement, $class_name = null, $one = false){
+            $req = $this->getPDO()->query($statement);   //stocker tous les articles.
+
+            //si le nom de la class n'est pas défini
+            if($class_name === null){
+                $req->setFetchMode(PDO::FETCH_OBJ);  //définir en objet basique
+            }
+            else{
+                $req->setFetchMode(PDO::FETCH_CLASS, $class_name);  //récupère les résultats
+            }
+
 
             //Si on veut afficher un seul article
             if($one){
                 $datas = $req->fetch();
             }
+            //sinon on affiche tous les résultats
             else{
-                $datas = $req->fetchAll();   //sinon on affiche tous les résultats
+                $datas = $req->fetchAll();
             }
-
-            return $datas;
+            return $datas;  //récupérer les résultats
         }
 
 
@@ -92,20 +102,23 @@
          * @return string
          */
         public function prepare($statement, $attributes, $class_name, $one = false){
-            $req = $this->getPDO()->prepare($statement);   //définit une requête préparé
-            $req->execute($attributes);  //exécuter la requète en fonction des paramètres de la requète
-            $req->setFetchMode(PDO::FETCH_CLASS, $class_name);  //récupère les résultats
-
+            $req = $this->getPDO()->prepare($statement);  //définit une requête préparé
+            $req->execute($attributes);   //exécuter la requète en fonction des paramètres de la requète
+            $req->setFetchMode(PDO::FETCH_CLASS, $class_name);   //récupère les résultats
+            
             //Si on veut afficher un seul article
             if($one){
                 $datas = $req->fetch();
             }
+            //sinon on affiche tous les résultats
             else{
-                $datas = $req->fetchAll();   //sinon on affiche tous les résultats
+                $datas = $req->fetchAll();
             }
-
             return $datas;
         }
+
     }
+
+
 
 ?>

@@ -1,6 +1,8 @@
 <?php
 
-    namespace App;
+    use Core\Config;
+    use Core\Database\MysqlDatabase;
+
 
 
 
@@ -35,13 +37,29 @@
 
 
         /**
+         * Chargement de l'autoloader contenu dans le dossier app et core 
+         * avec la méthode register de la class Autoloader
+         */
+        public static function load(){
+            session_start();
+
+            require ROOT . '/app/Autoloader.php';
+            App\Autoloader::register();
+
+            require ROOT . '/core/Autoloader.php';
+            Core\Autoloader::register();
+        }
+
+
+
+        /**
          * permettre de faire des instances de class plus facilement
          * @param  $name
-         * @return string
+         * @return instance
          */
         public function getTable($name){
             $class_name = '\\App\\Table\\' . ucfirst($name) . 'Table';   // '\\App\\Tables\\' permet de forcer le namespace complet
-            return new $class_name();
+            return new $class_name($this->getDb());
         }
 
 
@@ -53,13 +71,12 @@
          * @return l'instance
          */
         public function getDb(){
-            $config = config::getInstance();
+            $config = config::getInstance(ROOT . '/config/config.php');   //en param le fichier de configuration à appeler
             if(is_null($this->db_instance)){
-                $this->db_instance = new Database($config->get('db_name'), $config->get('db_user'), $config->get('db_pass'), $config->get('db_host'));
+                $this->db_instance = new MysqlDatabase($config->get('db_name'), $config->get('db_user'), $config->get('db_pass'), $config->get('db_host'));
             }
 
             return $this->db_instance;
-
         }
     }
 
