@@ -29,7 +29,7 @@
             if(is_null($this->table)){
                 $parts = explode('\\', get_class($this));
                 $class_name = end($parts);
-                $this->table = strtolower(str_replace('Table', '', $class_name));
+                $this->table = strtolower(str_replace('Table', '', $class_name)) . 's';
             }
         }
 
@@ -40,7 +40,7 @@
        * @return string  la requète sql
        */
       public function all(){
-          return $this->db->query('SELECT * FROM articles');
+          return $this->query("SELECT * FROM " . $this->table);
       }
 
 

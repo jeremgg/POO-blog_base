@@ -9,7 +9,7 @@
     class CategoryTable extends Table{
 
     	//définir un nom de table différent
-    	protected $table = 'categories lol'; 
+    	protected $table = 'categories'; 
 
     }
 

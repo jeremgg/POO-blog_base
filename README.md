@@ -23,6 +23,7 @@ Base d'un projet de blog en php orienté objet
 
   - Core : dossier contenant toutes les class génériques
       - Dossier Database : contient les méthodes permettant de se connecter à la base de donnée et de définir les types de requète
+      - Dossier Entity : contient la class parente à toutes les entitées
       - Dossier Table : contient les function pour effectuer les requète sur la base de donnée
       - class Autoloader : autoloading des class spécifique au dossier core
       - class Config : contients les fonction en rapport avec la configuration de la base de donnée
