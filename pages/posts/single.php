@@ -1,25 +1,21 @@
+
 <?php
 
-    use App\App;
-    use App\Table\Article;
-    use App\Table\Categorie;
-
-
+    $app = App::getInstance();
+    
 
     //Stocker l'article en fonction de son id
-    $post = Article::find($_GET['id']);
-
+    $post =  $app->getTable('Post')->find($_GET['id']);
 
     
     //si la valeur des paramètres URL n'existent pas, on redirige vers la page 404
     if($post === false){
-        App::notFound();
+        $app->notFound();
     }
 
     
-    
     //Définir le titre de l'article comme valeur dans le titre dans la page
-    App::setTitle($post->titre);
+    $app->title = $post->titre ;
 ?>
 
 
@@ -29,4 +25,5 @@
 <h2><?= $post->titre; ?></h2>
 <p><em><?= $post->categorie; ?></em></p>
 <p><?= $post->contenu; ?></p>
+
 

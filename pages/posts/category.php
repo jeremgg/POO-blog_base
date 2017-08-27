@@ -1,31 +1,28 @@
 <?php
 
-    use App\Table\Categorie;
-    use App\Table\Article;
-    use App\App;
-
+    //Stocker l'article en fonction de son id
+    $app = App::getInstance();
 
 
     //stocker la catégorie demandé en fonction de son id
-    $categorie = Categorie::find($_GET['id']);
-
+    $categorie = $app->getTable('Category')->find($_GET['id']);
 
 
     //si la valeur des paramètres URL n'existent pas, on redirige vers la page 404
     if($categorie === false){
-        App::notFound();
+        $app->notFound();
     }
 
-
-
+    
     //stocker les articles de la catégorie correspondante
-    $articles = Article::lastByCategory($_GET['id']);
-
-
+    $articles = $app->getTable('Post')->lastByCategory($_GET['id']);
+    
 
     //Afficher toutes les catégories
-    $categories = Categorie::all();
+    $categories = $app->getTable('Category')->all();
 ?>
+
+
 
 
 
@@ -54,11 +51,10 @@
     <div class="col-sm-4">
         <ul>
             <!-- AFFICHER TOUTES LES CATEGORIES -->
-            <?php foreach (\App\Table\Categorie::all() as $categorie) : ?>
-
-              <li><a href="<?= $categorie->url; ?>"><?= $categorie->titre; ?></a></li>
-
+            <?php foreach ($categories as $categorie) : ?>
+                <li><a href="<?= $categorie->url; ?>"><?= $categorie->titre; ?></a></li>
             <?php endforeach; ?>
         </ul>
     </div>
 </div>
+

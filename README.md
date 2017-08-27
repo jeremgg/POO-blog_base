@@ -8,10 +8,10 @@ Base d'un projet de blog en php orienté objet
 
 
   - App : dossier contenant toutes les class spécifique de l'application. C'est le corps de l'application qui permet de tout gérer
-      - dossier Entity : contient les fonction spécifiques pour l'affichage des données
-      - dossier Table : contient les requètes spécifiques pour l'affichage des données
-      		- Post : contient les méthodes spécifiques à l'affichage des articles sur home.php
-          - Category : contient les méthodes spécifiques aux catégories
+      - dossier Entity : contient tous les enregistrements
+      - dossier Table : permet de faire des requètes par rapport à différents types de contenus
+      		- Post : contient les méthodes spécifiques à l'affichage des articles
+          - Category : contient les méthodes spécifiques à l'affichage des catégories
           - user : contient les méthodes globales relatives au utilisateurs
 
       - class App : contient les méthodes globales à l'ensemble de l'application

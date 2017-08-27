@@ -46,6 +46,19 @@
 
 
       /**
+        * Récupérer un article en fonction de son id
+        * Initialiser la connexion à la BDD et faire la requète avec en paramètre
+        * la requète, l'id et définir d'afficher un seul résultat
+        * @param  $id
+        * @return array
+        */
+      public function find($id){
+            return $this->query("SELECT * FROM {$this->table} WHERE id = ?", [$id], true);
+        }
+
+
+
+      /**
         * Définir le type de requète (query ou prepare)
         * Si on a des attributs ce sera une requète préparée, sinon ce sera une requète standard
         * @param  $statement  la requète sql à effectuer

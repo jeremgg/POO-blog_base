@@ -78,6 +78,17 @@
 
             return $this->db_instance;
         }
+
+
+
+        /**
+         * rediriger l'utilisateur si la page demandée n'existe pas
+         */
+         public static function notFound(){
+             header('HTTP/1.0 404 Not Found');
+             //  header('Location:index.php?p=404');
+             die('page introuvable');
+         }
     }
 
 
