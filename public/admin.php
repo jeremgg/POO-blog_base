@@ -1,7 +1,11 @@
 <?php
 
+    use Core\Auth\DBAuth;
+
+
+
     //constante qui définit la racine de l'application
-	define('ROOT', dirname(__DIR__));
+    define('ROOT', dirname(__DIR__));
 
     
     //Chargement de la class App
@@ -26,22 +30,29 @@
 
 
 
+    //Vérifier que l'utilisateur est connecté
+    $app = App::getInstance();
+    $auth = new DBAuth($app->getDb());
+    if(!$auth->logged()){
+        $app ->forbidden();
+    }
+
+
+
+
     //Afficher les contenu des pages chargées
         //tous ce qui est affiché...
         ob_start();
 
             //Vérifier dans quelle page on veut accéder
             if($page === 'home'){
-                require ROOT . '/pages/posts/home.php';
-            }
+                require ROOT . '/pages/admin/posts/index.php';
+             }
             elseif($page === 'posts.category'){
-                require ROOT . '/pages/posts/category.php';
+                require ROOT . '/pages/admin/posts/category.php';
             }
             elseif($page === 'posts.single'){
-                require ROOT . '/pages/posts/single.php';
-            }
-            elseif($page === 'login'){
-                require ROOT . '/pages/users/login.php';
+                require ROOT . '/pages/admin/posts/single.php';
             }
 
         //... On le stocke dans une variable...

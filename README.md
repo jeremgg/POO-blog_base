@@ -8,8 +8,8 @@ Base d'un projet de blog en php orienté objet
 
 
   - App : dossier contenant toutes les class spécifique de l'application. C'est le corps de l'application qui permet de tout gérer
-      - dossier Entity : contient tous les enregistrements
-      - dossier Table : permet de faire des requètes par rapport à différents types de contenus
+      - Dossier Entity : contient tous les enregistrements
+      - Dossier Table : permet de faire des requètes par rapport à différents types de contenus
       		- Post : contient les méthodes spécifiques à l'affichage des articles
           - Category : contient les méthodes spécifiques à l'affichage des catégories
           - user : contient les méthodes globales relatives au utilisateurs
@@ -23,19 +23,24 @@ Base d'un projet de blog en php orienté objet
 
   - Core : dossier contenant toutes les class génériques
       - Dossier Database : contient les méthodes permettant de se connecter à la base de donnée et de définir les types de requète
+      - Dossier Auth : contient les méthodes qui permettent aux utilisateurs de se connecter au back-end
       - Dossier Entity : contient la class parente à toutes les entitées
       - Dossier Table : contient les function pour effectuer les requète sur la base de donnée
+      - Dossier HTML : contient les méthodes liées aux formulaires
       - class Autoloader : autoloading des class spécifique au dossier core
       - class Config : contients les fonction en rapport avec la configuration de la base de donnée
 
 
   - Pages : dossier contenant l'affichage de de chaques pages
-      - dossier posts : contient le contenu dynamique des pages de l'application
-      - dossier templates : contient les templates de pages 
+      - Dossier posts : contient le contenu dynamique des pages de l'application
+      - Dossier templates : contient les templates de pages 
+      - Dossier users : page de connexion au back-end
+      - Dossier admin : contient toutes les pages du back-end
 
 
   - public  : dossier contenant tous les fichiers publics
-      - dossier css
-      - dossier js
-      - index.php : racine du site
+      - Dossier css
+      - Dossier js
+      - index.php : racine du site front-end
+      - Admin.php : racine du site back-end
 

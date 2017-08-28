@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost:8889
--- Généré le :  Ven 25 Août 2017 à 23:26
+-- Généré le :  Lun 28 Août 2017 à 17:24
 -- Version du serveur :  5.5.42
 -- Version de PHP :  7.0.0
 
@@ -39,9 +39,9 @@ CREATE TABLE `articles` (
 --
 
 INSERT INTO `articles` (`id`, `titre`, `contenu`, `date`, `category_id`) VALUES
-(1, 'Article de test', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ultricies eget sapien sit amet vulputate. Maecenas nec convallis lacus. Sed at urna tellus. Nullam fringilla mi quis quam vulputate suscipit. Duis sit amet gravida lectus. Etiam sit amet est non quam imperdiet fringilla a vel ex. Sed eu tempus ante. Integer vestibulum leo facilisis nisl tempor dignissim. Nulla congue risus in ligula congue imperdiet. Donec elementum lectus arcu, nec condimentum lectus porttitor viverra. Morbi tempus purus vitae gravida porta. Nulla ullamcorper lectus eget dolor porttitor mattis. Nullam elementum scelerisque sem.\r\n\r\n', '2017-08-01 07:19:00', 2),
-(2, 'Article de test 2', 'In hac habitasse platea dictumst. Suspendisse sed turpis pulvinar, euismod lacus in, pellentesque mauris. Proin maximus accumsan urna, eget scelerisque eros auctor sit amet. Suspendisse aliquam risus metus, vitae eleifend justo bibendum in. Mauris ac odio velit. Aenean ac ante id odio feugiat iaculis. Maecenas facilisis mattis malesuada. Cras non feugiat quam, quis pulvinar sapien. In a efficitur dolor. Nullam eget nulla id tortor volutpat elementum at ut lectus. Integer dapibus semper convallis.\r\n\r\n', '2017-08-10 05:25:00', 1),
-(3, 'mon titre 3', 'Cras vel orci orci. Morbi pharetra a ligula eget ultrices. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer condimentum odio neque. Phasellus iaculis elit libero, vitae fermentum nibh tempus eget. Nullam quis ultricies ipsum. Etiam vitae arcu facilisis, pellentesque lacus a, ornare neque. Nam ac congue leo, a lobortis mi. Nunc ullamcorper varius tempus. Mauris viverra elementum vehicula. Vivamus commodo venenatis justo quis luctus. Aliquam efficitur libero eget varius ornare. Maecenas a sem rutrum, mollis sem at, condimentum purus.', '2017-08-23 08:21:00', 2);
+(1, '1er titre', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam imperdiet euismod tellus vel elementum. Sed sit amet massa at velit tristique bibendum vel in purus. Duis sit amet massa a metus consequat lacinia et sed metus. Proin massa mi, gravida eget pellentesque vitae, consectetur vitae erat. Nunc sit amet erat porttitor, viverra nunc nec, placerat enim. Vivamus vehicula mollis felis, sit amet ultrices dui euismod aliquet. Integer ut mi sed felis faucibus mattis ut non arcu. ', '2017-08-09 08:18:25', 1),
+(2, '2ème titre', 'Nunc eu elementum arcu. Pellentesque fringilla vel metus eget scelerisque. Cras ut libero sed neque accumsan sodales rhoncus dapibus ex. Donec metus ante, tincidunt eu quam rhoncus, aliquet commodo mi. Quisque quis tellus quis est aliquam tincidunt sit amet eu lacus. Maecenas nec urna risus. Vivamus non vestibulum tellus, in placerat nisi. Proin faucibus lacinia maximus. Ut feugiat id risus in malesuada.', '2017-08-16 07:20:34', 2),
+(3, '3ème titre', 'Quisque pretium aliquam mi, sit amet bibendum enim scelerisque ac. Ut felis quam, pulvinar in semper vitae, accumsan a nisi. Ut ut pellentesque enim, scelerisque consectetur tellus. Proin justo nulla, efficitur vitae sapien non, lacinia auctor leo. Donec justo tellus, ultrices varius quam vitae, gravida finibus leo. Nullam eget luctus augue. Praesent tortor risus, venenatis quis tempus volutpat, placerat non erat. ', '2017-08-30 08:28:39', 2);
 
 -- --------------------------------------------------------
 
@@ -59,8 +59,27 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `titre`) VALUES
-(1, 'informatique'),
-(2, 'digital painting');
+(1, 'digital painting'),
+(2, 'informatique');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  `password` char(40) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`) VALUES
+(1, 'demo', '89e495e7941cf9e40e6980d14a16bf023ccd4c91');
 
 --
 -- Index pour les tables exportées
@@ -79,6 +98,12 @@ ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT pour les tables exportées
 --
 
@@ -92,6 +117,11 @@ ALTER TABLE `articles`
 --
 ALTER TABLE `categories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT pour la table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

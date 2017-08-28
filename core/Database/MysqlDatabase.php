@@ -101,10 +101,17 @@
          * @param  boolean $one  le nombre d'articles à afficher
          * @return string
          */
-        public function prepare($statement, $attributes, $class_name, $one = false){
+        public function prepare($statement, $attributes, $class_name = null, $one = false){
             $req = $this->getPDO()->prepare($statement);  //définit une requête préparé
-            $req->execute($attributes);   //exécuter la requète en fonction des paramètres de la requète
-            $req->setFetchMode(PDO::FETCH_CLASS, $class_name);   //récupère les résultats
+            $req->execute($attributes);   //exécuter la requète en fonction des paramètres d
+
+            //si le nom de la class n'est pas défini
+            if($class_name === null){
+                $req->setFetchMode(PDO::FETCH_OBJ);  //définir en objet basique
+            }
+            else{
+                $req->setFetchMode(PDO::FETCH_CLASS, $class_name);  //récupère les résultats
+            }
             
             //Si on veut afficher un seul article
             if($one){
