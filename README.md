@@ -26,7 +26,7 @@ Base d'un projet de blog en php orienté objet
       - Dossier Auth : contient les méthodes qui permettent aux utilisateurs de se connecter au back-end
       - Dossier Entity : contient la class parente à toutes les entitées
       - Dossier Table : contient les function pour effectuer les requète sur la base de donnée
-      - Dossier HTML : contient les méthodes liées aux formulaires
+      - Dossier HTML : contient les class liées aux formulaires
       - class Autoloader : autoloading des class spécifique au dossier core
       - class Config : contients les fonction en rapport avec la configuration de la base de donnée
 
@@ -36,6 +36,8 @@ Base d'un projet de blog en php orienté objet
       - Dossier templates : contient les templates de pages 
       - Dossier users : page de connexion au back-end
       - Dossier admin : contient toutes les pages du back-end
+          - index.php : page qui liste tous les articles
+          - edit.php : page de modification des articles
 
 
   - public  : dossier contenant tous les fichiers publics

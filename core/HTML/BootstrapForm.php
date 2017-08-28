@@ -20,6 +20,7 @@
 
       /**
        * Afficher les champs du formulaires
+       * Vérifier si le type de champs et un textarea
        * @param  $name  string
        * @param  $label
        * @param  $options array
@@ -31,10 +32,43 @@
 
           $label = '<label>' . $label . '</label>';
 
-          $input = '<input type="'. $type . '" name="' . $name . '" value="' . $this->getValue($name) . '" class="form-control" />';
+          if($type === 'textarea'){
+              $input = '<textarea name="' . $name . '" class="form-control">' . $this->getValue($name) .'</textarea>';
+          }
+          else{
+              $input = '<input type="'. $type . '" name="' . $name . '" value="' . $this->getValue($name) . '" class="form-control" />';
+          }
 
           return $this->surround($label . $input);
       }
+
+
+
+
+      /**
+       * Définir les champs sélect
+       * @param  $name
+       * @param  $label
+       * @param  $options
+       * @return string
+       */
+      public function select($name, $label, $options){
+        $label = '<label>' . $label . '</label>';
+        $input = '<select class"form-control" name="' . $name . '">';
+        foreach ($options as $k => $v) {
+            $attributes = '';
+            
+            //Définir l'option par default
+            if($k == $this->getValue($name)){
+                $attributes = ' selected';
+            }
+            $input .= "<option value='$k'$attributes>$v</option>";
+        }
+
+        $input .= '</select>';
+
+        return $this->surround($label . $input);
+    }
 
 
 

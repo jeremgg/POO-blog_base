@@ -35,11 +35,17 @@
 
       /**
        * Stocker la valeur de l'index (si celui-ci existe) du tableau en cours
+       * en vérifiant que celle ci est contenu dans un tableau
        * @param  $index
        * @return string
        */
       protected function getValue($index){
-        return isset($this->data[$index]) ? $this->data[$index] : null;
+          if(is_object($this->data)){
+              return $this->data->$index;
+          }
+          else{
+              return isset($this->data[$index]) ? $this->data[$index] : null;
+          }
       }
 
 

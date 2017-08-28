@@ -71,6 +71,15 @@
         public function query($statement, $class_name = null, $one = false){
             $req = $this->getPDO()->query($statement);   //stocker tous les articles.
 
+            //Si on a une requète UPDATE, INSERT ou DELETE retourner le résultat de $req
+            if(
+                strpos($statement, 'UPDATE') === 0 ||
+                strpos($statement, 'INSERT') === 0 ||
+                strpos($statement, 'DELETE') === 0
+            ){
+                return $req;
+            }
+
             //si le nom de la class n'est pas défini
             if($class_name === null){
                 $req->setFetchMode(PDO::FETCH_OBJ);  //définir en objet basique
@@ -103,7 +112,16 @@
          */
         public function prepare($statement, $attributes, $class_name = null, $one = false){
             $req = $this->getPDO()->prepare($statement);  //définit une requête préparé
-            $req->execute($attributes);   //exécuter la requète en fonction des paramètres d
+            $res = $req->execute($attributes);   //exécuter la requète en fonction des paramètres
+
+            //Si on a une requète UPDATE, INSERT ou DELETE retourner le résultat de $res
+            if(
+                strpos($statement, 'UPDATE') === 0 ||
+                strpos($statement, 'INSERT') === 0 ||
+                strpos($statement, 'DELETE') === 0
+            ){
+                return $res;
+            }
 
             //si le nom de la class n'est pas défini
             if($class_name === null){

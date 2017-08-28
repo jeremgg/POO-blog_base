@@ -5,7 +5,7 @@
     
 
     //Stocker l'article en fonction de son id
-    $post =  $app->getTable('Post')->find($_GET['id']);
+    $post =  $app->getTable('Post')->findWitdhCategory($_GET['id']);
 
     
     //si la valeur des paramètres URL n'existent pas, on redirige vers la page 404

@@ -48,11 +48,8 @@
             if($page === 'home'){
                 require ROOT . '/pages/admin/posts/index.php';
              }
-            elseif($page === 'posts.category'){
-                require ROOT . '/pages/admin/posts/category.php';
-            }
-            elseif($page === 'posts.single'){
-                require ROOT . '/pages/admin/posts/single.php';
+            elseif($page === 'posts.edit'){
+                require ROOT . '/pages/admin/posts/edit.php';
             }
 
         //... On le stocke dans une variable...
