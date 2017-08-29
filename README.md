@@ -36,10 +36,16 @@ Base d'un projet de blog en php orienté objet
       - Dossier templates : contient les templates de pages 
       - Dossier users : page de connexion au back-end
       - Dossier admin : contient toutes les pages du back-end
-          - index.php : page qui liste tous les articles
-          - add.php : page pour ajouter des articles
-          - edit.php : page de modification des articles
-          - delete.php : page de suppression des articles
+          - Dossier posts : concerne les articles
+              - index.php : page qui liste tous les articles
+              - add.php : page pour ajouter des articles
+              - edit.php : page de modification des articles
+              - delete.php : page de suppression des articles
+          - Dossier categories : concerne les catégories
+              - index.php : page qui liste tous les catégories
+              - add.php : page pour ajouter des catégories
+              - edit.php : page de modification des catégories
+              - delete.php : page de suppression des catégories
 
 
   - public  : dossier contenant tous les fichiers publics
