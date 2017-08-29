@@ -142,6 +142,16 @@
             return $datas;
         }
 
+
+
+        /**
+         * Récupérer l'id du dernier article ajouté dans la BDD
+         * @return int
+         */
+        public function lastInsertId(){
+            return $this->getPdo()->lastInsertId();
+        }
+
     }
 
 

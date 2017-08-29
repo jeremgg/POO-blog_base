@@ -37,7 +37,9 @@ Base d'un projet de blog en php orienté objet
       - Dossier users : page de connexion au back-end
       - Dossier admin : contient toutes les pages du back-end
           - index.php : page qui liste tous les articles
+          - add.php : page pour ajouter des articles
           - edit.php : page de modification des articles
+          - delete.php : page de suppression des articles
 
 
   - public  : dossier contenant tous les fichiers publics
