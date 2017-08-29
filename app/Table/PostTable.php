@@ -53,7 +53,7 @@
          */
         public function findWitdhCategory($id){
             return $this->query("
-                SELECT articles.id, articles.titre, articles.contenu, articles.date, categories.titre, articles.category_id as categorie
+                SELECT articles.id, articles.titre, articles.contenu, articles.date, categories.titre as categorie
                 FROM articles
                 LEFT JOIN categories ON category_id = categories.id
                 WHERE articles.id = ?",
