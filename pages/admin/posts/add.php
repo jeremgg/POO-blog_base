@@ -3,7 +3,7 @@
     //On se connecte à la table des articles
     $postTable = App::getInstance()->getTable('Post');
 
-    
+
 
     //Si des données sont envoyées
     if(!empty($_POST)){
@@ -15,15 +15,15 @@
         ]);
 
         if($result){
-            header('location: admin.php?p=posts.edit&id=' . App::getInstance()->getDb()->lastInsertId());
+            header('location: admin.php');
         }
     }
 
-    
+
 
     //récupérer les catégories de l'articles
     $categories = App::getInstance()->getTable('Category')->extract('id', 'titre');
-    
+
 
 
     //Initialiser le formulaire
