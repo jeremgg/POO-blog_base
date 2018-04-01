@@ -3,7 +3,7 @@
     //On se connecte à la table des catégories
     $table = App::getInstance()->getTable('Category');
 
-    
+
 
     //Si des données sont envoyées
     if(!empty($_POST)){
@@ -13,7 +13,7 @@
 
         if($result){
             ?>
-            <div class="alert alert-success">La catégorie a bien été modifiée !</div>
+            <div class="alert alert-success">La catégorie a bien été modifiée ! <a href="admin.php?p=categories.index">Retour à la liste des catégories</a></div>
         <?php
         }
     }
@@ -22,7 +22,7 @@
 
     //récupérer l'article en fonction de son id
     $categorie = $table->find($_GET['id']);
-    
+
 
 
     //Initialiser le formulaire

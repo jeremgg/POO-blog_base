@@ -7,10 +7,10 @@
     //constante qui définit la racine de l'application
     define('ROOT', dirname(__DIR__));
 
-    
+
     //Chargement de la class App
     require ROOT . '/app/App.php';
-    
+
 
     //Chargement de notre autoloader
     App::load();
@@ -74,7 +74,7 @@
         $content = ob_get_clean();
 
         //... Puis on charge le template de page
-        require ROOT . '/pages/templates/default.php';
+        require ROOT . '/pages/templates/default-admin.php';
 
 
 ?>

@@ -3,7 +3,7 @@
     //On se connecte à la table des articles
     $postTable = App::getInstance()->getTable('Post');
 
-    
+
 
 
 
@@ -18,7 +18,7 @@
 
         if($result){
             ?>
-            <div class="alert alert-success">L'article a bien été modifié !</div>
+            <div class="alert alert-success">L'article a bien été modifié ! <a href="admin.php">Retour à la liste des articles</a></div>
         <?php
         }
     }
